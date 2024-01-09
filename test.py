@@ -1,7 +1,7 @@
 import os
 import cv2 as cv2
 import matplotlib.pyplot as plt
-import pytesseract
+#import pytesseract
 from PIL import Image
 import glob
 import numpy as np
@@ -63,12 +63,12 @@ else:
    #text = pytesseract.image_to_string(Image.open('images/Numberplate.jpg'))
    #result = reader.readtext('images/Numberplate.jpg')
 
-   text = pytesseract.image_to_string(Image.open('blackhat_image.jpg'))
+   #text = pytesseract.image_to_string(Image.open('blackhat_image.jpg'))
    result = reader.readtext('blackhat_image.jpg')
    #result2 = ocr.ocr('Numberplate.jpg')
    print(result)
    #print(result2)
-   print(text)
+   #print(text)
    print ('test')
    #cv2.imshow('Number Plate Image', img)
    
