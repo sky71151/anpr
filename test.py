@@ -1,5 +1,5 @@
-import os
-import cv2 as cv2
+import cv2
+print(cv2.__version__)
 import matplotlib.pyplot as plt
 #import pytesseract
 from PIL import Image
