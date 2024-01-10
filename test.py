@@ -7,6 +7,7 @@ import glob
 import numpy as np
 import easyocr
 import test2
+import check_license_plate
 #from paddleocr import PaddleOCR, draw_ocr
 #ocr = PaddleOCR(use_angle_cls=True, lang="en") # need to run only once to download and load model into memory
 
@@ -44,7 +45,10 @@ else:
       cv2.imwrite('images/Detected{}.jpg'.format(index), img)
       cv2.imwrite('images/Numberplate{}.jpg'.format(index), gray_plates)
       cv2.imwrite('images/normalplate{}.jpg'.format(index), normal_plate)
-      blackhat_image = test2.blackhat_image('images/normalplate{}.jpg'.format(index))
+      blackhat_image = test2.blackhat_image(normal_plate)
+      license_plate_text, license_plate_text_score = check_license_plate.read_license_plate(blackhat_image)
+      print(license_plate_text)
+      print(license_plate_text_score)
 
    
    # save number plate detected
