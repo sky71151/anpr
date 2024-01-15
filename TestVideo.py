@@ -15,7 +15,7 @@ import check_license_plate
 #custom_config = r"--oem 3 --psm 6"
 
 st = time.time()
-
+frame_nmr = -1
 reader = easyocr.Reader(['en'], gpu=True)
 
 
@@ -32,6 +32,8 @@ while(cap.isOpened()):
   # Capture frame-by-frame
   ret, frame = cap.read()
   if ret == True:
+     frame_nmr += 1
+     print('Frame number:', frame_nmr)
 
      #frame = cv2.resize(frame, (1920, 1080))
      frame = frame[1000:1800, 400:1000]
@@ -70,11 +72,15 @@ while(cap.isOpened()):
              license_plate_text, license_plate_text_score = check_license_plate.read_license_plate(result)
              print(license_plate_text)
              print(license_plate_text_score)
+
+             if license_plate_text_score is not None:
+                 cv2.imwrite('images/Detected.jpg', frame)
              #check_license_plate(result[0][1])
              #if result[0][2] >= 0.45:
              #   print(str(result[0][2]) + '&' + str(result[0][1]))
              #   cv2.putText(frame, result[0][1], (x,y-10), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0,255,0), 2)
          cv2.imwrite('images/Frame.jpg', frame)
+
   else:
      print ("still running")
      print('Done')

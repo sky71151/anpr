@@ -1,8 +1,8 @@
 import string
-import easyocr
+#import easyocr
 
 # Initialize the OCR reader
-reader = easyocr.Reader(['en'], gpu=True)
+#reader = easyocr.Reader(['en'], gpu=True)
 
 dict_char_to_int = {'O': '0',
                     'I': '1',
